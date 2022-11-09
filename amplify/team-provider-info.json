@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-customerfeedback-dev-144646-authRole",
+      "UnauthRoleArn": "arn:aws:iam::296215747775:role/amplify-customerfeedback-dev-144646-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::296215747775:role/amplify-customerfeedback-dev-144646-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-customerfeedback-dev-144646-deployment",
+      "UnauthRoleName": "amplify-customerfeedback-dev-144646-unauthRole",
+      "StackName": "amplify-customerfeedback-dev-144646",
+      "StackId": "arn:aws:cloudformation:us-east-1:296215747775:stack/amplify-customerfeedback-dev-144646/a189ea80-606f-11ed-8370-0e711b2bf1d7",
+      "AmplifyAppId": "d2r4mbnpxyrb49"
+    },
+    "categories": {
+      "auth": {
+        "customerfeedback3a98decb": {}
+      }
+    }
+  }
+}
