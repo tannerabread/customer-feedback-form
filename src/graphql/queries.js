@@ -5,25 +5,15 @@ export const getFeedback = /* GraphQL */ `
   query GetFeedback($id: ID!) {
     getFeedback(id: $id) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }
@@ -38,25 +28,15 @@ export const listFeedbacks = /* GraphQL */ `
     listFeedbacks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        description
+        op
+        issueUrl
+        issueNumber
+        repo
         email
         response
         rating
-        issueUrl
-        repo
         resolutionFeedback
         amplifyFeedback
-        firstResponseTime
-        averageResponseTime
-        medianResponseTime
-        numReactionsFromCommunity
-        numCommentsFromCommunity
-        totalOPComments
-        totalMaintainerComments
-        averageMaintainerCommentLength
-        closedByMaintainer
-        totalTimeToClose
         createdAt
         updatedAt
       }

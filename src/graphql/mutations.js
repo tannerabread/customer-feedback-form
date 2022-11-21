@@ -8,25 +8,15 @@ export const createFeedback = /* GraphQL */ `
   ) {
     createFeedback(input: $input, condition: $condition) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }
@@ -39,25 +29,15 @@ export const updateFeedback = /* GraphQL */ `
   ) {
     updateFeedback(input: $input, condition: $condition) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }
@@ -70,25 +50,15 @@ export const deleteFeedback = /* GraphQL */ `
   ) {
     deleteFeedback(input: $input, condition: $condition) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }

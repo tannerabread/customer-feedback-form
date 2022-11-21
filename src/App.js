@@ -33,10 +33,15 @@ function App({ signOut, user }) {
   // TODO add slack integration to backend
   // use appsync API with a mutation that goes into dynamoDB
   // use dynamo streams to trigger a lambda function that sends a message to slack
+  // future:
+  // add date/time submitted
+
+  // problems
+  // sending through title breaks links because spaces
 
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState("");
-  const [rating, setRecommend] = useState("");
+  const [rating, setRating] = useState("");
   const [resolutionFeedback, setResolutionFeedback] = useState("");
   const [amplifyFeedback, setAmplifyFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -60,13 +65,23 @@ function App({ signOut, user }) {
   const repo = repoMap[params.repo];
 
   async function submitFeedback() {
-    // send email, response, rating, issueUrl, repo, resolutionFeedback, amplifyFeedback
+    // op: String!
+    // issueUrl: String!
+    // issueNumber: Int!
+    // repo: String!
+    // email: String
+    // response: Boolean
+    // rating: Int
+    // resolutionFeedback: String
+    // amplifyFeedback: String
     const inputObject = {
+      op: params.op,
+      issueUrl: params.issue,
+      issueNumber: params.issue_num,
+      repo: params.repo,
       email,
       response,
       rating,
-      issueUrl,
-      repo: params.repo,
       resolutionFeedback,
       amplifyFeedback,
     };
@@ -127,7 +142,7 @@ function App({ signOut, user }) {
                 direction="row"
                 name="rating"
                 value={rating}
-                onChange={(e) => setRecommend(e.target.value)}
+                onChange={(e) => setRating(e.target.value)}
               >
                 <Radio value="1">1</Radio>
                 <Radio value="2">2</Radio>
@@ -155,7 +170,7 @@ function App({ signOut, user }) {
           </View>
         </>
       ) : (
-        <Text>Thank you for your feedback!</Text>
+        <Text>Thank you for your feedback! You can now close this window.</Text>
       )}
     </Flex>
   );

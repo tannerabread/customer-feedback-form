@@ -2,84 +2,54 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateFeedback = /* GraphQL */ `
-  subscription OnCreateFeedback {
-    onCreateFeedback {
+  subscription OnCreateFeedback($filter: ModelSubscriptionFeedbackFilterInput) {
+    onCreateFeedback(filter: $filter) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }
   }
 `;
 export const onUpdateFeedback = /* GraphQL */ `
-  subscription OnUpdateFeedback {
-    onUpdateFeedback {
+  subscription OnUpdateFeedback($filter: ModelSubscriptionFeedbackFilterInput) {
+    onUpdateFeedback(filter: $filter) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }
   }
 `;
 export const onDeleteFeedback = /* GraphQL */ `
-  subscription OnDeleteFeedback {
-    onDeleteFeedback {
+  subscription OnDeleteFeedback($filter: ModelSubscriptionFeedbackFilterInput) {
+    onDeleteFeedback(filter: $filter) {
       id
-      name
-      description
+      op
+      issueUrl
+      issueNumber
+      repo
       email
       response
       rating
-      issueUrl
-      repo
       resolutionFeedback
       amplifyFeedback
-      firstResponseTime
-      averageResponseTime
-      medianResponseTime
-      numReactionsFromCommunity
-      numCommentsFromCommunity
-      totalOPComments
-      totalMaintainerComments
-      averageMaintainerCommentLength
-      closedByMaintainer
-      totalTimeToClose
       createdAt
       updatedAt
     }

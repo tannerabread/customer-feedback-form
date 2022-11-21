@@ -4,23 +4,13 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Feedback @model {
   id: ID!
-  name: String!
-  description: String
+  op: String!
+  issueUrl: String!
+  issueNumber: Int!
+  repo: String!
   email: String
   response: Boolean
   rating: Int
-  issueUrl: String!
-  repo: String!
   resolutionFeedback: String
   amplifyFeedback: String
-  firstResponseTime: Int
-  averageResponseTime: Int
-  medianResponseTime: Int
-  numReactionsFromCommunity: Int
-  numCommentsFromCommunity: Int
-  totalOPComments: Int
-  totalMaintainerComments: Int
-  averageMaintainerCommentLength: Int
-  closedByMaintainer: Boolean
-  totalTimeToClose: Int
 }
