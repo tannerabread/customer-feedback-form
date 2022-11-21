@@ -23,21 +23,11 @@ function App({ signOut, user }) {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  // Project names:
-  //  Project Open Source Pundits
-  //  Project Responsive OctoCat
-  //  Project OctoCat Reporter
-  //  Project OctoCatanalysis
-  //  Project Critical OctoCat
-
   // TODO add slack integration to backend
   // use appsync API with a mutation that goes into dynamoDB
   // use dynamo streams to trigger a lambda function that sends a message to slack
   // future:
   // add date/time submitted
-
-  // problems
-  // sending through title breaks links because spaces
 
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState("");
@@ -65,15 +55,6 @@ function App({ signOut, user }) {
   const repo = repoMap[params.repo];
 
   async function submitFeedback() {
-    // op: String!
-    // issueUrl: String!
-    // issueNumber: Int!
-    // repo: String!
-    // email: String
-    // response: Boolean
-    // rating: Int
-    // resolutionFeedback: String
-    // amplifyFeedback: String
     const inputObject = {
       op: params.op,
       issueUrl: params.issue,
@@ -97,7 +78,6 @@ function App({ signOut, user }) {
   }
 
   // TODO: move form to own component
-  // TODO: send to different page if submitted
   return (
     <Flex
       direction="column"
@@ -105,6 +85,7 @@ function App({ signOut, user }) {
       alignItems="center"
       alignContent="center"
       gap="0.5rem"
+      margin="1rem"
     >
       {/* remove username/signout for live version */}
       <Text as="h1" variant="heading">
@@ -135,10 +116,8 @@ function App({ signOut, user }) {
                 <Radio value="yes">Yes</Radio>
                 <Radio value="no">No</Radio>
               </RadioGroupField>
-              {/* <Text>{`How likely are you to recommend ${repo} to a friend?`}</Text> */}
               <RadioGroupField
                 label={`How likely are you to recommend ${repo} to a friend?`}
-                // labelHidden="true"
                 direction="row"
                 name="rating"
                 value={rating}
