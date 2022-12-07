@@ -24,14 +24,14 @@ export function Form({ user, signOut }) {
   // add date/time submitted
 
   const [email, setEmail] = useState("");
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState(true);
   const [rating, setRating] = useState("");
   const [resolutionFeedback, setResolutionFeedback] = useState("");
   const [amplifyFeedback, setAmplifyFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    setResponse(params.response);
+    setResponse(params.response === "yes" ? true : false);
   }, [params.response]);
 
   async function submitFeedback() {
@@ -81,10 +81,10 @@ export function Form({ user, signOut }) {
       height="100vh"
     >
       {/* remove username/signout for live version */}
-      <Text as="h1" variant="heading">
+      {/* <Text as="h1" variant="heading">
         User: {user.getUsername()}
       </Text>
-      <Button onClick={signOut}>Sign Out</Button>
+      <Button onClick={signOut}>Sign Out</Button> */}
       {/* end remove username/signout for live version */}
       {!submitted ? (
         <>
