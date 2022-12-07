@@ -80,12 +80,6 @@ export function Form({ user, signOut }) {
       padding="1rem"
       height="100vh"
     >
-      {/* remove username/signout for live version */}
-      {/* <Text as="h1" variant="heading">
-        User: {user.getUsername()}
-      </Text>
-      <Button onClick={signOut}>Sign Out</Button> */}
-      {/* end remove username/signout for live version */}
       {!submitted ? (
         <>
           <Text>Github Issue URL: </Text>
