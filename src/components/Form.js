@@ -14,24 +14,20 @@ import {
 import { API, graphqlOperation } from "aws-amplify";
 import { createFeedback } from "../graphql/mutations";
 
-export function Form({ user, signOut }) {
+export function Form() {
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
-  // TODO add slack integration to backend
-  // use dynamo streams to trigger a lambda function that sends a message to slack
-  // add date/time submitted
-
   const [email, setEmail] = useState("");
-  const [response, setResponse] = useState(true);
+  const [response, setResponse] = useState("yes");
   const [rating, setRating] = useState("");
   const [resolutionFeedback, setResolutionFeedback] = useState("");
   const [amplifyFeedback, setAmplifyFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    setResponse(params.response === "yes" ? true : false);
+    setResponse(params.response);
   }, [params.response]);
 
   async function submitFeedback() {
@@ -41,7 +37,7 @@ export function Form({ user, signOut }) {
       issueNumber: params.issue_num,
       repo: params.repo,
       email,
-      response,
+      response: response === "yes" ? true : false,
       rating,
       resolutionFeedback,
       amplifyFeedback,
@@ -74,7 +70,6 @@ export function Form({ user, signOut }) {
   return (
     <Flex
       direction="column"
-      // justifyContent="center"
       alignItems="center"
       gap="0.5rem"
       padding="1rem"

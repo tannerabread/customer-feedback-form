@@ -9,6 +9,7 @@ import {
 } from "@aws-amplify/ui-react";
 import { Form } from "./components/Form";
 
+// Authentication only for demo
 // remove for production
 const formFields = {
   confirmVerifyUser: {
@@ -55,6 +56,7 @@ const components = {
     },
   },
 };
+// end remove for production
 
 function App() {
   const theme = {
@@ -62,6 +64,7 @@ function App() {
     overrides: [defaultDarkModeOverride],
   };
 
+  // remove authenticator for production
   return (
     <ThemeProvider theme={theme} colorMode="system">
       <Authenticator
@@ -69,11 +72,9 @@ function App() {
         components={components}
         hideSignUp={true}
       >
-        {({ user, signOut }) => (
-          <Card>
-            <Form user={user} signOut={signOut} />
-          </Card>
-        )}
+        <Card>
+          <Form />
+        </Card>
       </Authenticator>
     </ThemeProvider>
   );

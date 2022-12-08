@@ -1,0 +1,30 @@
+# name: Request Feedback on Issue Close
+
+on:
+  issues:
+    types: [closed]
+    
+permissions:
+  issues: write
+  
+jobs:
+  cleanup:
+    name: Request Feedback
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.issue.pull_request && !contains(fromJSON('["tannerabread"]'), github.event.issue.user.login) }}
+
+    steps:
+      - name: make comment requesting feedback
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          OP: ${{ github.event.issue.user.login }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh issue comment $ISSUE_NUMBER --repo $REPO -b "👋 @$OP
+          Are you satisified with the resolution of your issue?
+          [Yes](http://main.d2r4mbnpxyrb49.amplifyapp.com?issue_num=$ISSUE_NUMBER&issue=$ISSUE_URL&response=yes&repo=$REPO&op=$OP) [No](http://main.d2r4mbnpxyrb49.amplifyapp.com?issue_num=$ISSUE_NUMBER&issue=$ISSUE_URL&response=no&repo=$REPO&op=$OP)
+          Sharing your experience helps us continually improve ourselves.
+          We'd really appreciate you taking a few minutes to share your thoughts with us."
