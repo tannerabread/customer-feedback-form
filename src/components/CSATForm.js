@@ -14,13 +14,14 @@ import {
 import { API, graphqlOperation } from "aws-amplify";
 import { createFeedback } from "../graphql/mutations";
 
-export function Form() {
+export function CSATForm() {
   const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
 
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState("yes");
+  const [consent, setConsent] = useState("no");
   const [rating, setRating] = useState("");
   const [resolutionFeedback, setResolutionFeedback] = useState("");
   const [amplifyFeedback, setAmplifyFeedback] = useState("");
@@ -64,66 +65,70 @@ export function Form() {
     "aws-amplify/amplify-swift": "AWS Amplify Swift",
     "aws-amplify/amplify-flutter": "AWS Amplify Flutter",
   };
-  const repo = params.repo ? repoMap[params.repo] : 'AWS Amplify';
-
+  const repo = params.repo ? repoMap[params.repo] : "AWS Amplify";
+  
   return (
     <Flex
       direction="column"
       alignItems="center"
-      gap="0.5rem"
-      padding="1rem"
-      height="100vh"
+      padding="2rem 1rem"
+      minHeight="100vh"
       backgroundColor="background.primary"
     >
       {!submitted ? (
         <>
           <Text>Github Issue URL: </Text>
           <Link href={issueUrl}>{issueUrl}</Link>
-          <View as="form">
+          <View as="form" maxWidth="600px">
             <Flex direction="column" gap="1rem">
-              <TextField
-                descriptiveText="Enter a valid email address. AWS Amplify will use this to contact you if we have any follow-up questions."
-                placeholder="Email"
-                label="Email (optional)"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Divider orientation="horizontal" />
+              <Text>On a scale of 1-5, how satisfied are you with the resolution of your issue?</Text>
               <RadioGroupField
-                label="Are you satisfied with the resolution of your issue?"
+                label="On a scale of 1-5, how satisfied are you with the resolution of your issue?"
+                labelHidden
+                labelPosition="top"
                 name="satisfied"
                 direction="row"
+                alignSelf="center"
+                textAlign="center"
                 value={response}
                 onChange={(e) => setResponse(e.target.value)}
               >
-                <Radio value="yes">Yes</Radio>
-                <Radio value="no">No</Radio>
+                <Radio value="1">Terrible 1</Radio>
+                <Radio value="2">Unhappy 2</Radio>
+                <Radio value="3">Mixed 3</Radio>
+                <Radio value="4">Pleased 4</Radio>
+                <Radio value="5">Delighted 5</Radio>
               </RadioGroupField>
-              <RadioGroupField
-                label={`How likely are you to recommend ${repo} to a friend?`}
-                direction="row"
-                name="rating"
-                // labelPosition="top"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-              >
-                <Radio value="1">1</Radio>
-                <Radio value="2">2</Radio>
-                <Radio value="3">3</Radio>
-                <Radio value="4">4</Radio>
-                <Radio value="5">5</Radio>
-              </RadioGroupField>
-              <Divider orientation="horizontal" />
               <TextAreaField
-                label="Do you have any feedback on the resolution of your issue?"
-                placeholder="Resolution Feedback"
+                label="Why did you pick that score?"
+                placeholder="Reason for Score"
                 onChange={(e) => setResolutionFeedback(e.target.value)}
               />
               <Divider orientation="horizontal" />
               <TextAreaField
-                label="Do you have any feedback about AWS Amplify in general?"
+                label={`Do you have any feedback about ${repo} in general?`}
                 placeholder="Amplify Feedback"
                 onChange={(e) => setAmplifyFeedback(e.target.value)}
               />
+              <Divider orientation="horizontal" />
+              <RadioGroupField
+                label="May we reach out to you with further questions?"
+                name="consent"
+                direction="row"
+                value={consent}
+                onChange={(e) => setConsent(e.target.value)}
+              >
+                <Radio value="yes">Yes</Radio>
+                <Radio value="no">No</Radio>
+              </RadioGroupField>
+              {consent === "yes" && (
+                <TextField
+                  descriptiveText="Enter a valid email address. AWS Amplify will use this to contact you if we have any follow-up questions."
+                  placeholder="Email"
+                  label="Email (optional)"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              )}
               <Button onClick={submitFeedback} variation="primary">
                 Submit
               </Button>

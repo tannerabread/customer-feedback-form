@@ -1,6 +1,5 @@
 import {
   Authenticator,
-  Card,
   defaultDarkModeOverride,
   Heading,
   Text,
@@ -8,6 +7,7 @@ import {
   useTheme,
 } from "@aws-amplify/ui-react";
 import { Form } from "./components/Form";
+// import { CSATForm } from "./components/CSATForm";
 
 // Authentication only for demo
 // remove for production
@@ -72,9 +72,8 @@ function App() {
         components={components}
         hideSignUp={true}
       >
-        <Card>
-          <Form />
-        </Card>
+        <Form />
+        {/* <CSATForm /> */}
       </Authenticator>
     </ThemeProvider>
   );
