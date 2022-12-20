@@ -9,7 +9,7 @@ export const getFeedback = /* GraphQL */ `
       issueUrl
       issueNumber
       repo
-      email
+      alias
       response
       rating
       resolutionFeedback
@@ -32,7 +32,7 @@ export const listFeedbacks = /* GraphQL */ `
         issueUrl
         issueNumber
         repo
-        email
+        alias
         response
         rating
         resolutionFeedback

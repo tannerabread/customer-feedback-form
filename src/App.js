@@ -7,7 +7,8 @@ import {
   useTheme,
 } from "@aws-amplify/ui-react";
 import { Form } from "./components/Form";
-// import { CSATForm } from "./components/CSATForm";
+import { CSATForm } from "./components/CSATForm";
+import './mystyles.css';
 
 // Authentication only for demo
 // remove for production
@@ -72,8 +73,8 @@ function App() {
         components={components}
         hideSignUp={true}
       >
-        <Form />
-        {/* <CSATForm /> */}
+        {/* <Form /> */}
+        <CSATForm />
       </Authenticator>
     </ThemeProvider>
   );

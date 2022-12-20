@@ -8,8 +8,8 @@ type Feedback @model {
   issueUrl: String!
   issueNumber: Int!
   repo: String!
-  email: String
-  response: Boolean
+  alias: String
+  response: Int
   rating: Int
   resolutionFeedback: String
   amplifyFeedback: String

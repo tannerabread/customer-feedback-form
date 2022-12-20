@@ -9,7 +9,7 @@ export const onCreateFeedback = /* GraphQL */ `
       issueUrl
       issueNumber
       repo
-      email
+      alias
       response
       rating
       resolutionFeedback
@@ -27,7 +27,7 @@ export const onUpdateFeedback = /* GraphQL */ `
       issueUrl
       issueNumber
       repo
-      email
+      alias
       response
       rating
       resolutionFeedback
@@ -45,7 +45,7 @@ export const onDeleteFeedback = /* GraphQL */ `
       issueUrl
       issueNumber
       repo
-      email
+      alias
       response
       rating
       resolutionFeedback
