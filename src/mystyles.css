@@ -10,6 +10,8 @@
 }
 
 a.amplify-link {
+  max-width: 600px;
+
   overflow-wrap: break-word;
   word-wrap: break-word;
 
